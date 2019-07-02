@@ -1,0 +1,31 @@
+<main *ngIf="artist" role="main" class="container">
+	<div class="col-12">
+		<div class="card mb-3">
+			<div class="row no-gutters">
+				<div class="col-md-4">
+					<img [src]="artist.images[0].url" class="card-img" alt="...">
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h1 class="card-title display-4 font-italic">{{artist.name}}</h1>
+						<p class="card-text my-3">Followers: {{artist.followers.total}}.</p>
+						<p class="card-text my-3">Popularity: {{artist.popularity}}.</p>
+						<p class="card-text mb-0">
+							<a href="{{artist.href}}" class="font-weight-bold">Continue spotify...</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12 blog-main">
+			<h3 class="pb-4 mb-4 font-italic border-bottom">
+				{{artist.name}}
+			</h3>
+			<app-grid-list [type]="'artist'"></app-grid-list>
+		</div><!-- /.blog-main -->
+	</div><!-- /.row -->
+
+</main><!-- /.container -->

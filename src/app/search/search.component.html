@@ -1,0 +1,31 @@
+<div class="row justify-content-md-center mt-4">
+	<div class="col col-8">
+		<div class="input-group mb-3">
+      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [formControl]="query" placeholder="Search songs...">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-2"></div>
+
+<div class="row justify-content-md-center mt-4" *ngIf="results">
+  <div class="col col-8" *ngFor="let res of results">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 mat-toolbar mat-primary rounded shadow-sm" *ngIf="res.images.length > 0">
+      <img class="mr-3" src="" alt="" width="160" height="160" src="{{res.images[2].url}}" alt="">
+      <div class="lh-100">
+        <h6 class="mb-2 text-white lh-100"><a class="text-white" href="/artist/{{res.id}}">
+          {{res.name}}</a>
+        </h6>
+        <button type="button" class="btn btn-secondary btn-sm mr-4">Followers: {{res.followers.total}}</button>
+        <button type="button" class="btn btn-secondary btn-sm">Popularity: {{res.popularity}}</button>
+        <hr class="hr-white">
+        <button type="button" class="btn btn-outline-secondary btn-sm lh-100 m-1" *ngFor="let genre of res.genres">
+          {{genre}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

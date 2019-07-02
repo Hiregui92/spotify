@@ -1,0 +1,42 @@
+<div class="card mb-4 shadow-sm">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-9">
+				<div class="example-button-row">
+					<button mat-button>
+						<mat-icon>play_arrow</mat-icon>
+					</button>
+					<button *ngIf="album" mat-button (click)="addFavorite(album.id)" >
+						<mat-icon>favorite</mat-icon>
+					</button>
+				</div>
+			</div>
+			<div class="col-3">
+				<button mat-button [matMenuTriggerFor]="menu">
+					<mat-icon>settings</mat-icon>
+				</button>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item (click)="removeFavorite(album.id)" name="button-list">
+						<mat-icon>visibility_off</mat-icon>
+						Ocultar
+					</button>
+				</mat-menu>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="album.images.length > 0" class="image">
+		<img class="card-img-top" width="100%" height="225" src="{{album.images[1].url}}" alt="Photo of a Shiba Inu">
+	</div>
+	<div class="card-body">
+		<p class="card-text"> {{album.name}}.</p>
+		<p class="card-text"> {{album.artists[0].name}}.</p>
+		<div class="d-flex justify-content-between align-items-center">
+			<button type="button" class="btn btn-sm btn-outline-secondary">
+			Popularity: {{album.popularity}}</button>
+			<button type="button" class="btn btn-sm btn-outline-secondary">Release: {{album.release_date | date}}</button>
+		</div>
+		<div class="d-flex justify-content-end align-items-center mt-2">
+			<a class="card-link text-right" href="/album/{{album.id}}">View details</a>
+		</div>
+	</div>
+</div>

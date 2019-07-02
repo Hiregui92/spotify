@@ -1,0 +1,29 @@
+<div class="album py-5 bg-light">
+  <div class="container">
+    <h3>The last</h3>
+    <div class="row justify-content-end my-4">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>build</mat-icon>
+        Mostrar
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="toggleElements($event)" name="button-list" [ngClass]="{'active': displayMode === 'button-list'}">
+          <mat-icon>list</mat-icon>
+          Lista
+        </button>
+        <button mat-menu-item (click)="toggleElements($event)" name="button-grid" [ngClass]="{'active': displayMode === 'button-grid'}">
+          <mat-icon>grid_on</mat-icon>
+          Grid
+        </button>
+      </mat-menu>
+    </div>
+    
+    <div *ngIf="displayMode === 'button-grid'">
+      <app-grid-list [type]="'summary'"></app-grid-list>
+    </div>
+    <div *ngIf="displayMode === 'button-list'">
+      <app-media-list></app-media-list>
+    </div>
+  </div>
+</div>
