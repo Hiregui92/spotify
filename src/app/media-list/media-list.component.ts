@@ -27,7 +27,7 @@ export class MediaListComponent implements OnInit {
 		.subscribe((id) => {
 			this._spotifyService.getAuth()
 			.subscribe(res => {
-				this._spotifyService.getAlbumsIds(id, res["access_token"])
+				this._spotifyService.getAlbumsIds(id, res["access_token"], "summary")
 				.subscribe(data => {
 					console.log(data)
 					this.albums = data["albums"];

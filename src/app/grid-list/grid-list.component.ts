@@ -36,6 +36,19 @@ export class GridListComponent implements OnInit {
 	              });
 	          });
 	      });
-	  }
+	 
+	}
+
+	story: string = '';
+
+  getStory(story) {
+  	console.log('getStory');
+    this.story = story;
+  }
+
+
+	albumValueChange(event) {
+	    this.albums = this.albums.filter( Album => Album.id !== event.id);
+	}
 
 }
